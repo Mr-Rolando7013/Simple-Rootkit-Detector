@@ -1,0 +1,25 @@
+Category	What to baseline	Why
+Processes  |	Executable path, command line, user, parent, checksum of binary.	|   Detect new or renamed executables
+
+Phase 2: Collect and normalize data
+
+Collect
+
+Use system libraries (e.g. psutil, /proc, etc.) to pull data.
+
+Store metadata for each item — not just names. Example:
+for a file → path, size, mtime, hash, owner, permissions.
+
+Normalize
+
+Normalize data formats (e.g. consistent timestamps, lowercase paths, numeric UIDs).
+
+Filter ephemeral or irrelevant entries (temporary files, socket files, etc.).
+
+Sort or hash lists so comparisons later are easy.
+
+Verify trust
+
+Only baseline when you’re certain the system is clean.
+
+Optionally, compare your baseline files to package manager hashes (dpkg -V, rpm -V) to ensure integrity before trusting it.

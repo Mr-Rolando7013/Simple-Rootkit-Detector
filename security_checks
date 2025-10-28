@@ -1,0 +1,5 @@
+
+TRUSTED_DIRECTORIES = ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin',
+                        '/usr/local/sbin', '/snap/bin', '/lib', '/lib64', '/usr/lib',
+                        '/usr/lib64', '/usr/local/lib', '/etc', '/etc/ssl']
+

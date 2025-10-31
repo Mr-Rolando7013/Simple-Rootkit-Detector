@@ -3,7 +3,7 @@ import hashlib
 import os
 import json
 from create_db import *
-import json
+import datetime
 
 # List of field names from /proc/[pid]/stat
 stat_fields = [
@@ -17,7 +17,14 @@ stat_fields = [
     "env_start", "env_end", "exit_code"
 ]
 
-def read_proc_net():
+def create_snapshot():
+    timestamp = datetime.datetime.now().isoformat()
+    hostname = os.uname().nodename
+    temp = Snapshot(timestamp=timestamp, host=hostname)
+    add_snapshot(temp)
+    return temp.id
+
+def read_and_add_proc_net(snap_id):
     net_tcp_info = []
     net_tcp6_info = []
     net_udp_info = []
@@ -70,11 +77,28 @@ def read_proc_net():
             next(f)
             for line in f:
                 net_route_info.append(line.strip().split())
+
+        temp = ProcNetInfo(
+            snapshot_id=snap_id,
+            net_tcp_info=json.dumps(net_tcp_info, indent=4),
+            net_tcp6_info=json.dumps(net_tcp6_info, indent=4),
+            net_udp_info=json.dumps(net_udp_info, indent=4),
+            net_udp6_info=json.dumps(net_udp6_info, indent=4),
+            net_raw_info=json.dumps(net_raw_info, indent=4),
+            net_raw6_info=json.dumps(net_raw6_info, indent=4),
+            net_unix_info=json.dumps(net_unix_info, indent=4),
+            net_dev_info=json.dumps(net_dev_info, indent=4),
+            net_arp_info=json.dumps(net_arp_info, indent=4),
+            net_route_info=json.dumps(net_route_info, indent=4)
+        )
+
+        add_proc_net_info(temp)
     except FileNotFoundError:
         print("One of the /proc/net files does not exist.")
     except PermissionError:
         print("Permission denied when trying to read /proc/net files.")
 
+# TO DO
 def read_proc_meminfo():
     meminfo = {}
     try:
@@ -89,6 +113,7 @@ def read_proc_meminfo():
         print("Permission denied when trying to read /proc/meminfo.")
     return None
 
+# TO DO
 def read_proc_uptime():
     try:
         with open("/proc/uptime", "r") as f:
@@ -106,49 +131,45 @@ def read_proc_uptime():
     return None
 
 
-def read_proc_mounts():
-    mounts = []
+def read_and_add_proc_mounts(snap_id):
     try:
         with open("/proc/mounts", "r") as f:
             for line in f:
                 parts = line.split()
                 if len(parts) >= 6:
-                    mount_info = {
-                        "device": parts[0],
-                        "mount_point": parts[1],
-                        "fs_type": parts[2],
-                        "options": parts[3],
-                        "dump": int(parts[4]),
-                        "pass": int(parts[5])
-                    }
-                    mounts.append(mount_info)
+                    temp = Mounts(
+                        snapshot_id=snap_id,
+                        device=parts[0],
+                        mount_point=parts[1],
+                        fs_type=parts[2],
+                        options=parts[3],
+                        parent_id=None
+                    )
+                    add_mount(temp)
     except FileNotFoundError:
         print("The /proc/mounts file does not exist.")
     except PermissionError:
         print("Permission denied when trying to read /proc/mounts.")
-    return json.dumps(mounts, indent=4)
 
-def read_proc_modules():
-    modules = []
+def read_and_add_proc_modules(snap_id):
     try:
         with open("/proc/modules", "r") as f:
             for line in f:
                 parts = line.split()
                 if len(parts) >= 6:
-                    module_info = {
-                        "name": parts[0],
-                        "size": int(parts[1]),
-                        "refcount": int(parts[2]),
-                        "dependencies": parts[3].split(',') if parts[3] != '-' else [],
-                        "state": parts[4],
-                        "address": parts[5]
-                    }
-                    modules.append(module_info)
+                    temp = Modules(
+                        snapshot_id=snap_id,
+                        name=parts[0],
+                        size=int(parts[1]),
+                        instances=int(parts[2]),
+                        filename=parts[5],
+                        state=parts[3]
+                    )
+                add_mount(temp)
     except FileNotFoundError:
         print("The /proc/modules file does not exist.")
     except PermissionError:
         print("Permission denied when trying to read /proc/modules.")
-    return json.dumps(modules, indent=4)
 
 def read_stat_json(pid):
     with open(f"/proc/{pid}/stat", "r") as f:
@@ -178,7 +199,7 @@ def read_stat_json(pid):
     return json.dumps(stat_dict, indent=4)
 
 
-def read_fd_json(pid):
+def read_and_add_fd_json(pid, snap_id):
     # Im using version, but I pass a snpashot_id and that bs
     for file in os.listdir(f"/proc/{pid}/fd"):
         try:
@@ -188,7 +209,7 @@ def read_fd_json(pid):
             print("Target:", target)
             with open(f"/proc/{pid}/fdinfo/{file}", "r") as f:
                 info = f.read()
-                print("FD Info:", info)
+                #print("FD Info:", info)
             fd_info = {}
             for line in info.strip().splitlines():
                 if ":" in line:
@@ -198,6 +219,18 @@ def read_fd_json(pid):
 
             # Merge parsed FD info into the dict
             fd_dict[file]["info"] = fd_info
+            temp = Process_FDINFO(
+                snapshot_id=snap_id,  # Placeholder
+                pid=int(pid),
+                fd=file,
+                target=target,
+                pos=fd_info.get("pos"),
+                flags=fd_info.get("flags"),
+                mnt_id=fd_info.get("mnt_id"),
+                ino=fd_info.get("ino"),
+                type=fd_info.get("type")
+            )
+            add_process_fdinfo(temp)
         except (FileNotFoundError, PermissionError):
             continue
     return json.dumps(fd_dict, indent=4)
@@ -213,11 +246,42 @@ def decode_env_vars(data):
     
 
 def add_proc_details():
+    snap_id = create_snapshot()
     proc_directory = os.getcwd()  # Save current directory
     os.chdir('/proc')  # Change to /proc directory
+    
+    # -------------------------------------
+    # Read and process mounts and modules
+    # This works
+    read_and_add_proc_mounts(snap_id)
+    #display_mounts()
+
+    # This one works   
+    # TO DO: State field is not being stored correctly: "-" instead of "Live"
+    read_and_add_proc_modules(snap_id)
+    #display_modules()
+
+    # -------------------------------------
+    # This works
+    # Read network info
+    read_and_add_proc_net(snap_id)
+    #display_proc_net_info()
+
     for pid in os.listdir('.'):
         status_info = {}
         if pid.isdigit():
+            # -------------------------------------
+            # This works
+            try:
+                cwd_path = os.readlink(f"/proc/{pid}/cwd")
+                #print(f"Process {pid} cwd: {cwd_path}")
+            except FileNotFoundError:
+                print("Process does not exist anymore.")
+            except PermissionError:
+                print("No permission to read cwd of this process.")
+            
+            # -------------------------------------
+            # This works
             try:
                 os.chdir(pid)
                 try:
@@ -228,6 +292,8 @@ def add_proc_details():
                 except (FileNotFoundError, PermissionError):
                     notes = "Could not read cmdline"
 
+                # -------------------------------------
+                # This works
                 try:
                     with open('status', 'r') as f:
                         for line in f:
@@ -244,36 +310,45 @@ def add_proc_details():
                 except (FileNotFoundError, PermissionError, json.JSONDecodeError):
                     notes = "Could not read status"
                     print("ERROR:", notes)
-
+                
+                # -------------------------------------
+                # This works
                 try:
                     with open('environ', 'rb') as f:
                         data = f.read()
-                        sha256 = hashlib.sha256(data).hexdigest()
+                        env_hash_sha256 = hashlib.sha256(data).hexdigest()
                         env_vars = decode_env_vars(data)
-                        #print(f"ENV HASH: {sha256}")
+                        #print(f"ENV HASH: {env_hash_sha256}")
                         #print(f"ENVIRONMENT VARIABLES: {env_vars}")
                 except (FileNotFoundError, PermissionError):
                     env_vars = None
                     sha256 = None
 
-                try:
-                    stat_info = read_stat_json(pid)
-                    #print(f"STAT INFO: {stat_info}")
-                except (FileNotFoundError, PermissionError):
-                    pass
 
-                try:
-                    fd_info = read_fd_json(pid)
-                    #print(f"FD INFO: {fd_info}")
-                except (FileNotFoundError, PermissionError):
-                    pass
+                # -------------------------------------
+                # Get stat info
+                # This works
+                stat_info = read_stat_json(pid)
+                #print(f"STAT INFO: {stat_info}")
+                
 
-                try:
-                    with open('maps', 'r') as f:
-                        maps_data = f.read()
+                #-------------------------------------
+                # Crashes: Process does not exist anymore.
+                #Temp process: [Errno 2] No such file or directory: '24336'
+                #Process does not exist anymore.
+                #Temp process: [Errno 2] No such file or directory: '24337'
+                fd_info = read_and_add_fd_json(pid, snap_id)
+                print(f"FD INFO: {fd_info}")
+
+                # TO Do
+                #try:
+                    #with open('maps', 'r') as f:
+                        #maps_data = f.read()
                         #print(f"MAPS DATA: {maps_data}")
-                except (FileNotFoundError, PermissionError):
-                    pass
+                #except (FileNotFoundError, PermissionError):
+                    #pass
+
+                #add_proc_details(pid, cwd_path, uid, gid, env_hash_sha256, fd_info, None, cmdline, notes, get_version_number() + 1, stat_info)
             except FileNotFoundError as e:
                 print("Temp process:", e)
 
@@ -327,7 +402,7 @@ def main():
     choice = input().strip().lower()
     if choice == 'y':
         create_db()
-        add_process_to_table()
+        #add_process_to_table()
     print("Do you want to check the process security? (y/n): ")
     choice = input().strip().lower()
     if choice == 'y':

@@ -1,479 +1,54 @@
-2025-10-22 16:44:49,579 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,586 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes ORDER BY processes.version DESC
- LIMIT ? OFFSET ?
-2025-10-22 16:44:49,586 INFO sqlalchemy.engine.Engine [generated in 0.00050s] (1, 0)
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/sbin/init'], 'create_time': 1761143402.31, 'net_connections': [], 'ppid': 0, 'cwd': '/', 'exe': '/usr/lib/systemd/systemd', 'memory_info': pmem(rss=12447744, vms=171298816, shared=8253440, text=917504, lib=0, data=21028864, dirty=0), 'name': 'systemd', 'pid': 1}
-Executable Hash: de1681dd79a36db09e24cc40da14c9c973441f51dedd268e8ccb71007e6c20b7
-2025-10-22 16:44:49,609 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,609 INFO sqlalchemy.engine.Engine [generated in 0.00021s] (1, 'systemd', 'root', '/usr/lib/systemd/systemd', '1761143402.31', '/sbin/init', 0, '/', '[]', 'sleeping', 'pmem(rss=12447744, vms=171298816, shared=8253440, text=917504, lib=0, data=21028864, dirty=0)', 'de1681dd79a36db09e24cc40da14c9c973441f51dedd268e8ccb71007e6c20b7', 4)
-2025-10-22 16:44:49,609 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/init'], 'create_time': 1761143402.36, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/init', 'memory_info': pmem(rss=1966080, vms=3145728, shared=1835008, text=1875968, lib=0, data=442368, dirty=0), 'name': 'init-systemd(Ub', 'pid': 2}
-Executable Hash: f84f601a8451ce94a11db39bd622454dfcf9f19ac292e8263bbbd4e7cce52281
-2025-10-22 16:44:49,624 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,625 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,625 INFO sqlalchemy.engine.Engine [cached since 0.01642s ago] (2, 'init-systemd(Ub', 'root', '/init', '1761143402.36', '/init', 1, '/', '[]', 'sleeping', 'pmem(rss=1966080, vms=3145728, shared=1835008, text=1875968, lib=0, data=442368, dirty=0)', 'f84f601a8451ce94a11db39bd622454dfcf9f19ac292e8263bbbd4e7cce52281', 4)
-2025-10-22 16:44:49,625 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['plan9', '--control-socket', '7', '--log-level', '4', '--server-fd', '8', '--pipe-fd', '10', '--log-truncate'], 'create_time': 1761143402.87, 'net_connections': [], 'ppid': 2, 'cwd': '/', 'exe': '/init', 'memory_info': pmem(rss=2695168, vms=4055040, shared=1835008, text=1875968, lib=0, data=1318912, dirty=0), 'name': 'init', 'pid': 6}
-Executable Hash: f84f601a8451ce94a11db39bd622454dfcf9f19ac292e8263bbbd4e7cce52281
-2025-10-22 16:44:49,637 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,637 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,637 INFO sqlalchemy.engine.Engine [cached since 0.02906s ago] (6, 'init', 'root', '/init', '1761143402.87', 'plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate', 2, '/', '[]', 'sleeping', 'pmem(rss=2695168, vms=4055040, shared=1835008, text=1875968, lib=0, data=1318912, dirty=0)', 'f84f601a8451ce94a11db39bd622454dfcf9f19ac292e8263bbbd4e7cce52281', 4)
-2025-10-22 16:44:49,638 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/lib/systemd/systemd-journald'], 'create_time': 1761144087.46, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/lib/systemd/systemd-journald', 'memory_info': pmem(rss=11010048, vms=32104448, shared=10223616, text=94208, lib=0, data=9158656, dirty=0), 'name': 'systemd-journald', 'pid': 132}
-Executable Hash: 4c72335fde3cab3a12a8547d89aec01fb041c03049928f1cc02db7a4e4a68d98
-2025-10-22 16:44:49,649 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,649 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,649 INFO sqlalchemy.engine.Engine [cached since 0.04084s ago] (132, 'systemd-journald', 'root', '/usr/lib/systemd/systemd-journald', '1761144087.46', '/lib/systemd/systemd-journald', 1, '/', '[]', 'sleeping', 'pmem(rss=11010048, vms=32104448, shared=10223616, text=94208, lib=0, data=9158656, dirty=0)', '4c72335fde3cab3a12a8547d89aec01fb041c03049928f1cc02db7a4e4a68d98', 4)
-2025-10-22 16:44:49,650 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/lib/systemd/systemd-udevd'], 'create_time': 1761144087.54, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/udevadm', 'memory_info': pmem(rss=5898240, vms=23658496, shared=4587520, text=647168, lib=0, data=1249280, dirty=0), 'name': 'systemd-udevd', 'pid': 154}
-Executable Hash: cda7cf444d2dd8df1b19d07146c9c420599f071b82f60baf787e8a2d4ebb76d3
-2025-10-22 16:44:49,661 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,661 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,661 INFO sqlalchemy.engine.Engine [cached since 0.05248s ago] (154, 'systemd-udevd', 'root', '/usr/bin/udevadm', '1761144087.54', '/lib/systemd/systemd-udevd', 1, '/', '[]', 'sleeping', 'pmem(rss=5898240, vms=23658496, shared=4587520, text=647168, lib=0, data=1249280, dirty=0)', 'cda7cf444d2dd8df1b19d07146c9c420599f071b82f60baf787e8a2d4ebb76d3', 4)
-2025-10-22 16:44:49,661 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['snapfuse', '/var/lib/snapd/snaps/core22_2133.snap', '/snap/core22/2133', '-o', 'ro,nodev,allow_other,suid'], 'create_time': 1761144087.56, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/snapfuse', 'memory_info': pmem(rss=12029952, vms=462897152, shared=1441792, text=20480, lib=0, data=68390912, dirty=0), 'name': 'snapfuse', 'pid': 169}
-Executable Hash: 2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b
-2025-10-22 16:44:49,669 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,670 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,670 INFO sqlalchemy.engine.Engine [cached since 0.0614s ago] (169, 'snapfuse', 'root', '/usr/bin/snapfuse', '1761144087.56', 'snapfuse /var/lib/snapd/snaps/core22_2133.snap /snap/core22/2133 -o ro,nodev,allow_other,suid', 1, '/', '[]', 'sleeping', 'pmem(rss=12029952, vms=462897152, shared=1441792, text=20480, lib=0, data=68390912, dirty=0)', '2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b', 4)
-2025-10-22 16:44:49,670 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['snapfuse', '/var/lib/snapd/snaps/bare_5.snap', '/snap/bare/5', '-o', 'ro,nodev,allow_other,suid'], 'create_time': 1761144087.56, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/snapfuse', 'memory_info': pmem(rss=1441792, vms=156663808, shared=1310720, text=20480, lib=0, data=19537920, dirty=0), 'name': 'snapfuse', 'pid': 171}
-Executable Hash: 2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b
-2025-10-22 16:44:49,677 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,678 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,678 INFO sqlalchemy.engine.Engine [cached since 0.06937s ago] (171, 'snapfuse', 'root', '/usr/bin/snapfuse', '1761144087.56', 'snapfuse /var/lib/snapd/snaps/bare_5.snap /snap/bare/5 -o ro,nodev,allow_other,suid', 1, '/', '[]', 'sleeping', 'pmem(rss=1441792, vms=156663808, shared=1310720, text=20480, lib=0, data=19537920, dirty=0)', '2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b', 4)
-2025-10-22 16:44:49,678 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['snapfuse', '/var/lib/snapd/snaps/gtk-common-themes_1535.snap', '/snap/gtk-common-themes/1535', '-o', 'ro,nodev,allow_other,suid'], 'create_time': 1761144087.56, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/snapfuse', 'memory_info': pmem(rss=1314816, vms=233357312, shared=1179648, text=20480, lib=0, data=29253632, dirty=0), 'name': 'snapfuse', 'pid': 174}
-Executable Hash: 2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b
-2025-10-22 16:44:49,687 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,687 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,687 INFO sqlalchemy.engine.Engine [cached since 0.07908s ago] (174, 'snapfuse', 'root', '/usr/bin/snapfuse', '1761144087.56', 'snapfuse /var/lib/snapd/snaps/gtk-common-themes_1535.snap /snap/gtk-common-themes/1535 -o ro,nodev,allow_other,suid', 1, '/', '[]', 'sleeping', 'pmem(rss=1314816, vms=233357312, shared=1179648, text=20480, lib=0, data=29253632, dirty=0)', '2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b', 4)
-2025-10-22 16:44:49,688 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['snapfuse', '/var/lib/snapd/snaps/nvim_4390.snap', '/snap/nvim/4390', '-o', 'ro,nodev,allow_other,suid'], 'create_time': 1761144087.57, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/snapfuse', 'memory_info': pmem(rss=1572864, vms=156798976, shared=1310720, text=20480, lib=0, data=19861504, dirty=0), 'name': 'snapfuse', 'pid': 190}
-Executable Hash: 2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b
-2025-10-22 16:44:49,696 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,697 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,697 INFO sqlalchemy.engine.Engine [cached since 0.08845s ago] (190, 'snapfuse', 'root', '/usr/bin/snapfuse', '1761144087.57', 'snapfuse /var/lib/snapd/snaps/nvim_4390.snap /snap/nvim/4390 -o ro,nodev,allow_other,suid', 1, '/', '[]', 'sleeping', 'pmem(rss=1572864, vms=156798976, shared=1310720, text=20480, lib=0, data=19861504, dirty=0)', '2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b', 4)
-2025-10-22 16:44:49,697 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['snapfuse', '/var/lib/snapd/snaps/snapd_21759.snap', '/snap/snapd/21759', '-o', 'ro,nodev,allow_other,suid'], 'create_time': 1761144087.57, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/snapfuse', 'memory_info': pmem(rss=1441792, vms=156663808, shared=1310720, text=20480, lib=0, data=19537920, dirty=0), 'name': 'snapfuse', 'pid': 195}
-Executable Hash: 2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b
-2025-10-22 16:44:49,706 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,706 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,706 INFO sqlalchemy.engine.Engine [cached since 0.09769s ago] (195, 'snapfuse', 'root', '/usr/bin/snapfuse', '1761144087.57', 'snapfuse /var/lib/snapd/snaps/snapd_21759.snap /snap/snapd/21759 -o ro,nodev,allow_other,suid', 1, '/', '[]', 'sleeping', 'pmem(rss=1441792, vms=156663808, shared=1310720, text=20480, lib=0, data=19537920, dirty=0)', '2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b', 4)
-2025-10-22 16:44:49,707 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['snapfuse', '/var/lib/snapd/snaps/snapd_25202.snap', '/snap/snapd/25202', '-o', 'ro,nodev,allow_other,suid'], 'create_time': 1761144087.57, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/snapfuse', 'memory_info': pmem(rss=11653120, vms=616013824, shared=1441792, text=20480, lib=0, data=91430912, dirty=0), 'name': 'snapfuse', 'pid': 204}
-Executable Hash: 2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b
-2025-10-22 16:44:49,716 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,717 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,717 INFO sqlalchemy.engine.Engine [cached since 0.1085s ago] (204, 'snapfuse', 'root', '/usr/bin/snapfuse', '1761144087.57', 'snapfuse /var/lib/snapd/snaps/snapd_25202.snap /snap/snapd/25202 -o ro,nodev,allow_other,suid', 1, '/', '[]', 'sleeping', 'pmem(rss=11653120, vms=616013824, shared=1441792, text=20480, lib=0, data=91430912, dirty=0)', '2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b', 4)
-2025-10-22 16:44:49,717 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['snapfuse', '/var/lib/snapd/snaps/ubuntu-desktop-installer_1276.snap', '/snap/ubuntu-desktop-installer/1276', '-o', 'ro,nodev,allow_other,suid'], 'create_time': 1761144087.57, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/snapfuse', 'memory_info': pmem(rss=1441792, vms=156663808, shared=1310720, text=20480, lib=0, data=19537920, dirty=0), 'name': 'snapfuse', 'pid': 207}
-Executable Hash: 2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b
-2025-10-22 16:44:49,727 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,727 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,727 INFO sqlalchemy.engine.Engine [cached since 0.1189s ago] (207, 'snapfuse', 'root', '/usr/bin/snapfuse', '1761144087.57', 'snapfuse /var/lib/snapd/snaps/ubuntu-desktop-installer_1276.snap /snap/ubuntu-desktop-installer/1276 -o ro,nodev,allow_other,suid', 1, '/', '[]', 'sleeping', 'pmem(rss=1441792, vms=156663808, shared=1310720, text=20480, lib=0, data=19537920, dirty=0)', '2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b', 4)
-2025-10-22 16:44:49,728 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['snapfuse', '/var/lib/snapd/snaps/ubuntu-desktop-installer_1286.snap', '/snap/ubuntu-desktop-installer/1286', '-o', 'ro,nodev,allow_other,suid'], 'create_time': 1761144087.58, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/snapfuse', 'memory_info': pmem(rss=10084352, vms=309780480, shared=1441792, text=20480, lib=0, data=50372608, dirty=0), 'name': 'snapfuse', 'pid': 212}
-Executable Hash: 2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b
-2025-10-22 16:44:49,736 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,736 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,736 INFO sqlalchemy.engine.Engine [cached since 0.128s ago] (212, 'snapfuse', 'root', '/usr/bin/snapfuse', '1761144087.58', 'snapfuse /var/lib/snapd/snaps/ubuntu-desktop-installer_1286.snap /snap/ubuntu-desktop-installer/1286 -o ro,nodev,allow_other,suid', 1, '/', '[]', 'sleeping', 'pmem(rss=10084352, vms=309780480, shared=1441792, text=20480, lib=0, data=50372608, dirty=0)', '2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b', 4)
-2025-10-22 16:44:49,737 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'systemd-resolve', 'cmdline': ['/lib/systemd/systemd-resolved'], 'create_time': 1761144087.62, 'net_connections': [pconn(fd=14, family=<AddressFamily.AF_INET: 2>, type=<SocketKind.SOCK_STREAM: 1>, laddr=addr(ip='127.0.0.53', port=53), raddr=(), status='LISTEN'), pconn(fd=13, family=<AddressFamily.AF_INET: 2>, type=<SocketKind.SOCK_DGRAM: 2>, laddr=addr(ip='127.0.0.53', port=53), raddr=(), status='NONE')], 'ppid': 1, 'cwd': '/', 'exe': '/usr/lib/systemd/systemd-resolved', 'memory_info': pmem(rss=13762560, vms=26963968, shared=8781824, text=315392, lib=0, data=4788224, dirty=0), 'name': 'systemd-resolved', 'pid': 247}
-Executable Hash: 318e94b45cb887ee975406186a9bd979a5feff2b6ecbe3161beb2f8e62e3bdca
-2025-10-22 16:44:49,750 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,750 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,750 INFO sqlalchemy.engine.Engine [cached since 0.1415s ago] (247, 'systemd-resolved', 'systemd-resolve', '/usr/lib/systemd/systemd-resolved', '1761144087.62', '/lib/systemd/systemd-resolved', 1, '/', "[pconn(fd=14, family=<AddressFamily.AF_INET: 2>, type=<SocketKind.SOCK_STREAM: 1>, laddr=addr(ip='127.0.0.53', port=53), raddr=(), status='LISTEN'), pconn(fd=13, family=<AddressFamily.AF_INET: 2>, type=<SocketKind.SOCK_DGRAM: 2>, laddr=addr(ip='127.0.0.53', port=53), raddr=(), status='NONE')]", 'sleeping', 'pmem(rss=13762560, vms=26963968, shared=8781824, text=315392, lib=0, data=4788224, dirty=0)', '318e94b45cb887ee975406186a9bd979a5feff2b6ecbe3161beb2f8e62e3bdca', 4)
-2025-10-22 16:44:49,750 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/usr/sbin/cron', '-f', '-P'], 'create_time': 1761144087.74, 'net_connections': [], 'ppid': 1, 'cwd': '/var/spool/cron', 'exe': '/usr/sbin/cron', 'memory_info': pmem(rss=2621440, vms=4411392, shared=2490368, text=28672, lib=0, data=450560, dirty=0), 'name': 'cron', 'pid': 277}
-Executable Hash: ffc30864da514025c073a29d5afc6705ff8bbe4ecfdbc7917dd674e37b7b1b8a
-2025-10-22 16:44:49,760 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,760 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,760 INFO sqlalchemy.engine.Engine [cached since 0.1521s ago] (277, 'cron', 'root', '/usr/sbin/cron', '1761144087.74', '/usr/sbin/cron -f -P', 1, '/var/spool/cron', '[]', 'sleeping', 'pmem(rss=2621440, vms=4411392, shared=2490368, text=28672, lib=0, data=450560, dirty=0)', 'ffc30864da514025c073a29d5afc6705ff8bbe4ecfdbc7917dd674e37b7b1b8a', 4)
-2025-10-22 16:44:49,761 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'messagebus', 'cmdline': ['@dbus-daemon', '--system', '--address=systemd:', '--nofork', '--nopidfile', '--systemd-activation', '--syslog-only'], 'create_time': 1761144087.74, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/dbus-daemon', 'memory_info': pmem(rss=4063232, vms=8744960, shared=3801088, text=143360, lib=0, data=782336, dirty=0), 'name': 'dbus-daemon', 'pid': 280}
-Executable Hash: 9e5cf3260e8b0d68a88732ebc4386970ff5977f4a9bcb9022a13ab905f832bbc
-2025-10-22 16:44:49,771 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,772 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,772 INFO sqlalchemy.engine.Engine [cached since 0.1633s ago] (280, 'dbus-daemon', 'messagebus', '/usr/bin/dbus-daemon', '1761144087.74', '@dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only', 1, '/', '[]', 'sleeping', 'pmem(rss=4063232, vms=8744960, shared=3801088, text=143360, lib=0, data=782336, dirty=0)', '9e5cf3260e8b0d68a88732ebc4386970ff5977f4a9bcb9022a13ab905f832bbc', 4)
-2025-10-22 16:44:49,772 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/usr/bin/python3', '/usr/bin/networkd-dispatcher', '--run-startup-triggers'], 'create_time': 1761144087.75, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/python3.10', 'memory_info': pmem(rss=19005440, vms=30904320, shared=10092544, text=2838528, lib=0, data=10924032, dirty=0), 'name': 'networkd-dispat', 'pid': 286}
-Executable Hash: df23391eb5ab66f005be15f792d55766d7ce96198e9e10df2aea72aec8c686ea
-2025-10-22 16:44:49,787 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,787 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,787 INFO sqlalchemy.engine.Engine [cached since 0.1787s ago] (286, 'networkd-dispat', 'root', '/usr/bin/python3.10', '1761144087.75', '/usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers', 1, '/', '[]', 'sleeping', 'pmem(rss=19005440, vms=30904320, shared=10092544, text=2838528, lib=0, data=10924032, dirty=0)', 'df23391eb5ab66f005be15f792d55766d7ce96198e9e10df2aea72aec8c686ea', 4)
-2025-10-22 16:44:49,788 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'syslog', 'cmdline': ['/usr/sbin/rsyslogd', '-n', '-iNONE'], 'create_time': 1761144087.76, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/sbin/rsyslogd', 'memory_info': pmem(rss=5373952, vms=227741696, shared=4325376, text=442368, lib=0, data=18771968, dirty=0), 'name': 'rsyslogd', 'pid': 290}
-Executable Hash: fd20fd23bf5eb62b1d8bbc11a43cd3845008718e6554cad7379916ca166040fa
-2025-10-22 16:44:49,800 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,801 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,801 INFO sqlalchemy.engine.Engine [cached since 0.1922s ago] (290, 'rsyslogd', 'syslog', '/usr/sbin/rsyslogd', '1761144087.76', '/usr/sbin/rsyslogd -n -iNONE', 1, '/', '[]', 'sleeping', 'pmem(rss=5373952, vms=227741696, shared=4325376, text=442368, lib=0, data=18771968, dirty=0)', 'fd20fd23bf5eb62b1d8bbc11a43cd3845008718e6554cad7379916ca166040fa', 4)
-2025-10-22 16:44:49,801 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/usr/lib/snapd/snapd'], 'create_time': 1761144087.77, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/snap/snapd/25202/usr/lib/snapd/snapd', 'memory_info': pmem(rss=39870464, vms=2499350528, shared=24903680, text=12656640, lib=0, data=195432448, dirty=0), 'name': 'snapd', 'pid': 320}
-Executable Hash: 38a1840853b0fea8ce0e2593dc6bc86d8a3f18e6ea5b27fe8716600b7e027cbf
-2025-10-22 16:44:49,837 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,837 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,837 INFO sqlalchemy.engine.Engine [cached since 0.229s ago] (320, 'snapd', 'root', '/snap/snapd/25202/usr/lib/snapd/snapd', '1761144087.77', '/usr/lib/snapd/snapd', 1, '/', '[]', 'sleeping', 'pmem(rss=39870464, vms=2499350528, shared=24903680, text=12656640, lib=0, data=195432448, dirty=0)', '38a1840853b0fea8ce0e2593dc6bc86d8a3f18e6ea5b27fe8716600b7e027cbf', 4)
-2025-10-22 16:44:49,838 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/lib/systemd/systemd-logind'], 'create_time': 1761144087.78, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/lib/systemd/systemd-logind', 'memory_info': pmem(rss=7208960, vms=15695872, shared=6422528, text=139264, lib=0, data=737280, dirty=0), 'name': 'systemd-logind', 'pid': 327}
-Executable Hash: d466074d94f48f9e59d69e5147153f2a1a603d7349d9133f5c0a22955eaff5bb
-2025-10-22 16:44:49,850 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,850 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,850 INFO sqlalchemy.engine.Engine [cached since 0.2416s ago] (327, 'systemd-logind', 'root', '/usr/lib/systemd/systemd-logind', '1761144087.78', '/lib/systemd/systemd-logind', 1, '/', '[]', 'sleeping', 'pmem(rss=7208960, vms=15695872, shared=6422528, text=139264, lib=0, data=737280, dirty=0)', 'd466074d94f48f9e59d69e5147153f2a1a603d7349d9133f5c0a22955eaff5bb', 4)
-2025-10-22 16:44:49,851 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/bin/bash', '/snap/ubuntu-desktop-installer/1286/bin/subiquity-server'], 'create_time': 1761144087.82, 'net_connections': [], 'ppid': 1, 'cwd': '/snap/ubuntu-desktop-installer/1286/bin/subiquity', 'exe': '/usr/bin/bash', 'memory_info': pmem(rss=3407872, vms=4898816, shared=3145728, text=913408, lib=0, data=446464, dirty=0), 'name': 'subiquity-serve', 'pid': 348}
-Executable Hash: 59474588a312b6b6e73e5a42a59bf71e62b55416b6c9d5e4a6e1c630c2a9ecd4
-2025-10-22 16:44:49,864 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,864 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,865 INFO sqlalchemy.engine.Engine [cached since 0.2561s ago] (348, 'subiquity-serve', 'root', '/usr/bin/bash', '1761144087.82', '/bin/bash /snap/ubuntu-desktop-installer/1286/bin/subiquity-server', 1, '/snap/ubuntu-desktop-installer/1286/bin/subiquity', '[]', 'sleeping', 'pmem(rss=3407872, vms=4898816, shared=3145728, text=913408, lib=0, data=446464, dirty=0)', '59474588a312b6b6e73e5a42a59bf71e62b55416b6c9d5e4a6e1c630c2a9ecd4', 4)
-2025-10-22 16:44:49,865 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/usr/bin/containerd'], 'create_time': 1761144087.83, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/containerd', 'memory_info': pmem(rss=46882816, vms=2298269696, shared=33292288, text=19722240, lib=0, data=165208064, dirty=0), 'name': 'containerd', 'pid': 350}
-Executable Hash: dcc852392394384950fe31fb1f951559448b9a41517bf2a213bbcf3892215453
-2025-10-22 16:44:49,925 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,926 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,926 INFO sqlalchemy.engine.Engine [cached since 0.3173s ago] (350, 'containerd', 'root', '/usr/bin/containerd', '1761144087.83', '/usr/bin/containerd', 1, '/', '[]', 'sleeping', 'pmem(rss=46882816, vms=2298269696, shared=33292288, text=19722240, lib=0, data=165208064, dirty=0)', 'dcc852392394384950fe31fb1f951559448b9a41517bf2a213bbcf3892215453', 4)
-2025-10-22 16:44:49,926 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/sbin/agetty', '-o', '-p -- \\u', '--noclear', '--keep-baud', 'console', '115200,38400,9600', 'vt220'], 'create_time': 1761144087.85, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/sbin/agetty', 'memory_info': pmem(rss=2097152, vms=3317760, shared=2097152, text=28672, lib=0, data=372736, dirty=0), 'name': 'agetty', 'pid': 360}
-Executable Hash: 9d20ff93c2222e48df68d7edb25207efbd13d22d4937e00ea74bc020ad4eaa40
-2025-10-22 16:44:49,937 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,937 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,938 INFO sqlalchemy.engine.Engine [cached since 0.3291s ago] (360, 'agetty', 'root', '/usr/sbin/agetty', '1761144087.85', '/sbin/agetty -o -p -- \\u --noclear --keep-baud console 115200,38400,9600 vt220', 1, '/', '[]', 'sleeping', 'pmem(rss=2097152, vms=3317760, shared=2097152, text=28672, lib=0, data=372736, dirty=0)', '9d20ff93c2222e48df68d7edb25207efbd13d22d4937e00ea74bc020ad4eaa40', 4)
-2025-10-22 16:44:49,938 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/sbin/agetty', '-o', '-p -- \\u', '--noclear', 'tty1', 'linux'], 'create_time': 1761144087.87, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/sbin/agetty', 'memory_info': pmem(rss=2097152, vms=3272704, shared=1966080, text=28672, lib=0, data=372736, dirty=0), 'name': 'agetty', 'pid': 362}
-Executable Hash: 9d20ff93c2222e48df68d7edb25207efbd13d22d4937e00ea74bc020ad4eaa40
-2025-10-22 16:44:49,945 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,945 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,946 INFO sqlalchemy.engine.Engine [cached since 0.3371s ago] (362, 'agetty', 'root', '/usr/sbin/agetty', '1761144087.87', '/sbin/agetty -o -p -- \\u --noclear tty1 linux', 1, '/', '[]', 'sleeping', 'pmem(rss=2097152, vms=3272704, shared=1966080, text=28672, lib=0, data=372736, dirty=0)', '9d20ff93c2222e48df68d7edb25207efbd13d22d4937e00ea74bc020ad4eaa40', 4)
-2025-10-22 16:44:49,946 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/usr/bin/python3', '/usr/share/unattended-upgrades/unattended-upgrade-shutdown', '--wait-for-signal'], 'create_time': 1761144087.89, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/python3.10', 'memory_info': pmem(rss=21094400, vms=109834240, shared=12976128, text=2838528, lib=0, data=18173952, dirty=0), 'name': 'unattended-upgr', 'pid': 370}
-Executable Hash: df23391eb5ab66f005be15f792d55766d7ce96198e9e10df2aea72aec8c686ea
-2025-10-22 16:44:49,961 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:49,961 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:49,961 INFO sqlalchemy.engine.Engine [cached since 0.3528s ago] (370, 'unattended-upgr', 'root', '/usr/bin/python3.10', '1761144087.89', '/usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal', 1, '/', '[]', 'sleeping', 'pmem(rss=21094400, vms=109834240, shared=12976128, text=2838528, lib=0, data=18173952, dirty=0)', 'df23391eb5ab66f005be15f792d55766d7ce96198e9e10df2aea72aec8c686ea', 4)
-2025-10-22 16:44:49,962 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/usr/bin/dockerd', '-H', 'fd://', '--containerd=/run/containerd/containerd.sock'], 'create_time': 1761144088.11, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/dockerd', 'memory_info': pmem(rss=78880768, vms=2639904768, shared=55967744, text=31277056, lib=0, data=205475840, dirty=0), 'name': 'dockerd', 'pid': 400}
-Executable Hash: ee0c1b8df569473dc5ff01a86051e55ae76791e87a72aa657b1adaaa25e948d9
-2025-10-22 16:44:50,064 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,064 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,064 INFO sqlalchemy.engine.Engine [cached since 0.4559s ago] (400, 'dockerd', 'root', '/usr/bin/dockerd', '1761144088.11', '/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock', 1, '/', '[]', 'sleeping', 'pmem(rss=78880768, vms=2639904768, shared=55967744, text=31277056, lib=0, data=205475840, dirty=0)', 'ee0c1b8df569473dc5ff01a86051e55ae76791e87a72aa657b1adaaa25e948d9', 4)
-2025-10-22 16:44:50,065 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/snap/ubuntu-desktop-installer/1286/usr/bin/python3.10', '-m', 'subiquity.cmd.server', '--use-os-prober', '--storage-version=2', '--postinst-hooks-dir=/snap/ubuntu-desktop-installer/1286/etc/subiquity/postinst.d'], 'create_time': 1761144088.92, 'net_connections': [], 'ppid': 348, 'cwd': '/snap/ubuntu-desktop-installer/1286/bin/subiquity', 'exe': '/snap/ubuntu-desktop-installer/1286/usr/bin/python3.10', 'memory_info': pmem(rss=84787200, vms=1150328832, shared=27656192, text=2818048, lib=0, data=134668288, dirty=0), 'name': 'python3.10', 'pid': 537}
-Executable Hash: 31f1810af53255e328add95d11e1f8a29aefd332d84242c1955cd96b6d831bd1
-2025-10-22 16:44:50,081 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,081 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,081 INFO sqlalchemy.engine.Engine [cached since 0.4728s ago] (537, 'python3.10', 'root', '/snap/ubuntu-desktop-installer/1286/usr/bin/python3.10', '1761144088.92', '/snap/ubuntu-desktop-installer/1286/usr/bin/python3.10 -m subiquity.cmd.server --use-os-prober --storage-version=2 --postinst-hooks-dir=/snap/ubuntu-desktop-installer/1286/etc/subiquity/postinst.d', 348, '/snap/ubuntu-desktop-installer/1286/bin/subiquity', '[]', 'sleeping', 'pmem(rss=84787200, vms=1150328832, shared=27656192, text=2818048, lib=0, data=134668288, dirty=0)', '31f1810af53255e328add95d11e1f8a29aefd332d84242c1955cd96b6d831bd1', 4)
-2025-10-22 16:44:50,082 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/usr/bin/docker-proxy', '-proto', 'tcp', '-host-ip', '0.0.0.0', '-host-port', '3306', '-container-ip', '172.18.0.2', '-container-port', '3306'], 'create_time': 1761144089.58, 'net_connections': [pconn(fd=4, family=<AddressFamily.AF_INET: 2>, type=<SocketKind.SOCK_STREAM: 1>, laddr=addr(ip='0.0.0.0', port=3306), raddr=(), status='LISTEN')], 'ppid': 400, 'cwd': '/', 'exe': '/usr/bin/docker-proxy', 'memory_info': pmem(rss=3670016, vms=1788030976, shared=2883584, text=827392, lib=0, data=101548032, dirty=0), 'name': 'docker-proxy', 'pid': 735}
-Executable Hash: 99322ed9061dbdd61f732096ead06e14c76452d6384934b4cecf6081f73bb23f
-2025-10-22 16:44:50,093 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,093 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,093 INFO sqlalchemy.engine.Engine [cached since 0.4847s ago] (735, 'docker-proxy', 'root', '/usr/bin/docker-proxy', '1761144089.58', '/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 3306 -container-ip 172.18.0.2 -container-port 3306', 400, '/', "[pconn(fd=4, family=<AddressFamily.AF_INET: 2>, type=<SocketKind.SOCK_STREAM: 1>, laddr=addr(ip='0.0.0.0', port=3306), raddr=(), status='LISTEN')]", 'sleeping', 'pmem(rss=3670016, vms=1788030976, shared=2883584, text=827392, lib=0, data=101548032, dirty=0)', '99322ed9061dbdd61f732096ead06e14c76452d6384934b4cecf6081f73bb23f', 4)
-2025-10-22 16:44:50,093 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/usr/bin/docker-proxy', '-proto', 'tcp', '-host-ip', '::', '-host-port', '3306', '-container-ip', '172.18.0.2', '-container-port', '3306'], 'create_time': 1761144089.58, 'net_connections': [pconn(fd=4, family=<AddressFamily.AF_INET6: 10>, type=<SocketKind.SOCK_STREAM: 1>, laddr=addr(ip='::', port=3306), raddr=(), status='LISTEN')], 'ppid': 400, 'cwd': '/', 'exe': '/usr/bin/docker-proxy', 'memory_info': pmem(rss=3801088, vms=1787768832, shared=2883584, text=827392, lib=0, data=101285888, dirty=0), 'name': 'docker-proxy', 'pid': 742}
-Executable Hash: 99322ed9061dbdd61f732096ead06e14c76452d6384934b4cecf6081f73bb23f
-2025-10-22 16:44:50,103 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,104 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,104 INFO sqlalchemy.engine.Engine [cached since 0.4955s ago] (742, 'docker-proxy', 'root', '/usr/bin/docker-proxy', '1761144089.58', '/usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 3306 -container-ip 172.18.0.2 -container-port 3306', 400, '/', "[pconn(fd=4, family=<AddressFamily.AF_INET6: 10>, type=<SocketKind.SOCK_STREAM: 1>, laddr=addr(ip='::', port=3306), raddr=(), status='LISTEN')]", 'sleeping', 'pmem(rss=3801088, vms=1787768832, shared=2883584, text=827392, lib=0, data=101285888, dirty=0)', '99322ed9061dbdd61f732096ead06e14c76452d6384934b4cecf6081f73bb23f', 4)
-2025-10-22 16:44:50,104 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/usr/bin/containerd-shim-runc-v2', '-namespace', 'moby', '-id', 'e94839aeb3f5bf939a3433cf522cf3cb2cd1012269436ab0056133714ab6b460', '-address', '/run/containerd/containerd.sock'], 'create_time': 1761144089.68, 'net_connections': [], 'ppid': 1, 'cwd': '/run/containerd/io.containerd.runtime.v2.task/moby/e94839aeb3f5bf939a3433cf522cf3cb2cd1012269436ab0056133714ab6b460', 'exe': '/usr/bin/containerd-shim-runc-v2', 'memory_info': pmem(rss=13422592, vms=1267621888, shared=9830400, text=5582848, lib=0, data=42348544, dirty=0), 'name': 'containerd-shim-runc-v2', 'pid': 768}
-Executable Hash: 92c839431103901df975607ea2a79b845b6891a96d3b6d8aa39cb1fed759e1ae
-2025-10-22 16:44:50,125 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,125 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,125 INFO sqlalchemy.engine.Engine [cached since 0.517s ago] (768, 'containerd-shim-runc-v2', 'root', '/usr/bin/containerd-shim-runc-v2', '1761144089.68', '/usr/bin/containerd-shim-runc-v2 -namespace moby -id e94839aeb3f5bf939a3433cf522cf3cb2cd1012269436ab0056133714ab6b460 -address /run/containerd/containerd.sock', 1, '/run/containerd/io.containerd.runtime.v2.task/moby/e94839aeb3f5bf939a3433cf522cf3cb2cd1012269436ab0056133714ab6b460', '[]', 'sleeping', 'pmem(rss=13422592, vms=1267621888, shared=9830400, text=5582848, lib=0, data=42348544, dirty=0)', '92c839431103901df975607ea2a79b845b6891a96d3b6d8aa39cb1fed759e1ae', 4)
-2025-10-22 16:44:50,126 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': '999', 'cmdline': ['mysqld', '--mysql-native-password=ON'], 'create_time': 1761144089.76, 'net_connections': [], 'ppid': 768, 'cwd': '/var/lib/mysql', 'exe': '/usr/sbin/mysqld', 'memory_info': pmem(rss=503091200, vms=2168680448, shared=34603008, text=28196864, lib=0, data=870326272, dirty=0), 'name': 'mysqld', 'pid': 793}
-Executable Hash: None
-2025-10-22 16:44:50,136 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,136 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,136 INFO sqlalchemy.engine.Engine [cached since 0.5277s ago] (793, 'mysqld', '999', '/usr/sbin/mysqld', '1761144089.76', 'mysqld --mysql-native-password=ON', 768, '/var/lib/mysql', '[]', 'sleeping', 'pmem(rss=503091200, vms=2168680448, shared=34603008, text=28196864, lib=0, data=870326272, dirty=0)', None, 4)
-2025-10-22 16:44:50,136 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/init'], 'create_time': 1761144090.13, 'net_connections': [], 'ppid': 2, 'cwd': '/', 'exe': '/init', 'memory_info': pmem(rss=917504, vms=3162112, shared=917504, text=1875968, lib=0, data=458752, dirty=0), 'name': 'SessionLeader', 'pid': 878}
-Executable Hash: f84f601a8451ce94a11db39bd622454dfcf9f19ac292e8263bbbd4e7cce52281
-2025-10-22 16:44:50,150 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,151 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,151 INFO sqlalchemy.engine.Engine [cached since 0.5423s ago] (878, 'SessionLeader', 'root', '/init', '1761144090.13', '/init', 2, '/', '[]', 'sleeping', 'pmem(rss=917504, vms=3162112, shared=917504, text=1875968, lib=0, data=458752, dirty=0)', 'f84f601a8451ce94a11db39bd622454dfcf9f19ac292e8263bbbd4e7cce52281', 4)
-2025-10-22 16:44:50,151 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/init'], 'create_time': 1761144090.13, 'net_connections': [], 'ppid': 878, 'cwd': '/', 'exe': '/init', 'memory_info': pmem(rss=1052672, vms=3162112, shared=917504, text=1875968, lib=0, data=458752, dirty=0), 'name': 'Relay(888)', 'pid': 881}
-Executable Hash: f84f601a8451ce94a11db39bd622454dfcf9f19ac292e8263bbbd4e7cce52281
-2025-10-22 16:44:50,162 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,163 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,163 INFO sqlalchemy.engine.Engine [cached since 0.5549s ago] (881, 'Relay(888)', 'root', '/init', '1761144090.13', '/init', 878, '/', '[]', 'sleeping', 'pmem(rss=1052672, vms=3162112, shared=917504, text=1875968, lib=0, data=458752, dirty=0)', 'f84f601a8451ce94a11db39bd622454dfcf9f19ac292e8263bbbd4e7cce52281', 4)
-2025-10-22 16:44:50,164 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['-bash'], 'create_time': 1761144090.15, 'net_connections': [], 'ppid': 881, 'cwd': '/home/root/simple-rootkitDetector', 'exe': '/usr/bin/bash', 'memory_info': pmem(rss=9175040, vms=10145792, shared=3538944, text=913408, lib=0, data=5693440, dirty=0), 'name': 'bash', 'pid': 888}
-Executable Hash: 59474588a312b6b6e73e5a42a59bf71e62b55416b6c9d5e4a6e1c630c2a9ecd4
-2025-10-22 16:44:50,176 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,176 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,177 INFO sqlalchemy.engine.Engine [cached since 0.5682s ago] (888, 'bash', 'root', '/usr/bin/bash', '1761144090.15', '-bash', 881, '/home/root/simple-rootkitDetector', '[]', 'sleeping', 'pmem(rss=9175040, vms=10145792, shared=3538944, text=913408, lib=0, data=5693440, dirty=0)', '59474588a312b6b6e73e5a42a59bf71e62b55416b6c9d5e4a6e1c630c2a9ecd4', 4)
-2025-10-22 16:44:50,177 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/bin/login', '-f', '', '', '', '', ''], 'create_time': 1761144090.15, 'net_connections': [], 'ppid': 2, 'cwd': '/', 'exe': '/usr/bin/login', 'memory_info': pmem(rss=4718592, vms=7659520, shared=3932160, text=28672, lib=0, data=942080, dirty=0), 'name': 'login', 'pid': 890}
-Executable Hash: 74af88c74071baf525cfc8faafcae6fa8e96eb79a871bee151a9ae20bf4a1710
-2025-10-22 16:44:50,187 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,188 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,188 INFO sqlalchemy.engine.Engine [cached since 0.5794s ago] (890, 'login', 'root', '/usr/bin/login', '1761144090.15', '/bin/login -f     ', 2, '/', '[]', 'sleeping', 'pmem(rss=4718592, vms=7659520, shared=3932160, text=28672, lib=0, data=942080, dirty=0)', '74af88c74071baf525cfc8faafcae6fa8e96eb79a871bee151a9ae20bf4a1710', 4)
-2025-10-22 16:44:50,188 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['/lib/systemd/systemd', '--user'], 'create_time': 1761144090.27, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/lib/systemd/systemd', 'memory_info': pmem(rss=9568256, vms=17625088, shared=7995392, text=917504, lib=0, data=1310720, dirty=0), 'name': 'systemd', 'pid': 923}
-Executable Hash: de1681dd79a36db09e24cc40da14c9c973441f51dedd268e8ccb71007e6c20b7
-2025-10-22 16:44:50,200 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,200 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,200 INFO sqlalchemy.engine.Engine [cached since 0.592s ago] (923, 'systemd', 'root', '/usr/lib/systemd/systemd', '1761144090.27', '/lib/systemd/systemd --user', 1, '/', '[]', 'sleeping', 'pmem(rss=9568256, vms=17625088, shared=7995392, text=917504, lib=0, data=1310720, dirty=0)', 'de1681dd79a36db09e24cc40da14c9c973441f51dedd268e8ccb71007e6c20b7', 4)
-2025-10-22 16:44:50,201 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['(sd-pam)'], 'create_time': 1761144090.27, 'net_connections': [], 'ppid': 923, 'cwd': '/', 'exe': '/usr/lib/systemd/systemd', 'memory_info': pmem(rss=5296128, vms=173088768, shared=1572864, text=917504, lib=0, data=20008960, dirty=0), 'name': '(sd-pam)', 'pid': 924}
-Executable Hash: de1681dd79a36db09e24cc40da14c9c973441f51dedd268e8ccb71007e6c20b7
-2025-10-22 16:44:50,213 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,213 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,213 INFO sqlalchemy.engine.Engine [cached since 0.6046s ago] (924, '(sd-pam)', 'root', '/usr/lib/systemd/systemd', '1761144090.27', '(sd-pam)', 923, '/', '[]', 'sleeping', 'pmem(rss=5296128, vms=173088768, shared=1572864, text=917504, lib=0, data=20008960, dirty=0)', 'de1681dd79a36db09e24cc40da14c9c973441f51dedd268e8ccb71007e6c20b7', 4)
-2025-10-22 16:44:50,213 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['-bash'], 'create_time': 1761144090.4, 'net_connections': [], 'ppid': 890, 'cwd': '/root', 'exe': '/usr/bin/bash', 'memory_info': pmem(rss=8646656, vms=10055680, shared=3407872, text=913408, lib=0, data=5603328, dirty=0), 'name': 'bash', 'pid': 961}
-Executable Hash: 59474588a312b6b6e73e5a42a59bf71e62b55416b6c9d5e4a6e1c630c2a9ecd4
-2025-10-22 16:44:50,223 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,224 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,224 INFO sqlalchemy.engine.Engine [cached since 0.6154s ago] (961, 'bash', 'root', '/usr/bin/bash', '1761144090.4', '-bash', 890, '/root', '[]', 'sleeping', 'pmem(rss=8646656, vms=10055680, shared=3407872, text=913408, lib=0, data=5603328, dirty=0)', '59474588a312b6b6e73e5a42a59bf71e62b55416b6c9d5e4a6e1c630c2a9ecd4', 4)
-2025-10-22 16:44:50,224 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['python3', '/snap/ubuntu-desktop-installer/1286/usr/bin/cloud-init', 'status', '--wait'], 'create_time': 1761144093.01, 'net_connections': [], 'ppid': 537, 'cwd': '/snap/ubuntu-desktop-installer/1286/bin/subiquity', 'exe': '/snap/ubuntu-desktop-installer/1286/usr/bin/python3.10', 'memory_info': pmem(rss=38629376, vms=45260800, shared=10354688, text=2818048, lib=0, data=29663232, dirty=0), 'name': 'python3', 'pid': 1521}
-Executable Hash: 31f1810af53255e328add95d11e1f8a29aefd332d84242c1955cd96b6d831bd1
-2025-10-22 16:44:50,238 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,239 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,239 INFO sqlalchemy.engine.Engine [cached since 0.6302s ago] (1521, 'python3', 'root', '/snap/ubuntu-desktop-installer/1286/usr/bin/python3.10', '1761144093.01', 'python3 /snap/ubuntu-desktop-installer/1286/usr/bin/cloud-init status --wait', 537, '/snap/ubuntu-desktop-installer/1286/bin/subiquity', '[]', 'sleeping', 'pmem(rss=38629376, vms=45260800, shared=10354688, text=2818048, lib=0, data=29663232, dirty=0)', '31f1810af53255e328add95d11e1f8a29aefd332d84242c1955cd96b6d831bd1', 4)
-2025-10-22 16:44:50,239 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['snapfuse', '/var/lib/snapd/snaps/core22_2139.snap', '/snap/core22/2139', '-o', 'ro,nodev,allow_other,suid'], 'create_time': 1761144093.22, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/snapfuse', 'memory_info': pmem(rss=6008832, vms=309915648, shared=1441792, text=20480, lib=0, data=43216896, dirty=0), 'name': 'snapfuse', 'pid': 1585}
-Executable Hash: 2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b
-2025-10-22 16:44:50,248 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,249 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,249 INFO sqlalchemy.engine.Engine [cached since 0.6402s ago] (1585, 'snapfuse', 'root', '/usr/bin/snapfuse', '1761144093.22', 'snapfuse /var/lib/snapd/snaps/core22_2139.snap /snap/core22/2139 -o ro,nodev,allow_other,suid', 1, '/', '[]', 'sleeping', 'pmem(rss=6008832, vms=309915648, shared=1441792, text=20480, lib=0, data=43216896, dirty=0)', '2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b', 4)
-2025-10-22 16:44:50,249 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'sleeping', 'username': 'root', 'cmdline': ['snapfuse', '/var/lib/snapd/snaps/nvim_4424.snap', '/snap/nvim/4424', '-o', 'ro,nodev,allow_other,suid'], 'create_time': 1761144095.24, 'net_connections': [], 'ppid': 1, 'cwd': '/', 'exe': '/usr/bin/snapfuse', 'memory_info': pmem(rss=1441792, vms=156798976, shared=1310720, text=20480, lib=0, data=19861504, dirty=0), 'name': 'snapfuse', 'pid': 1756}
-Executable Hash: 2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b
-2025-10-22 16:44:50,258 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,258 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,258 INFO sqlalchemy.engine.Engine [cached since 0.6496s ago] (1756, 'snapfuse', 'root', '/usr/bin/snapfuse', '1761144095.24', 'snapfuse /var/lib/snapd/snaps/nvim_4424.snap /snap/nvim/4424 -o ro,nodev,allow_other,suid', 1, '/', '[]', 'sleeping', 'pmem(rss=1441792, vms=156798976, shared=1310720, text=20480, lib=0, data=19861504, dirty=0)', '2eee8f83c276020af0014e38a240996c2e3e8bd7650e57715bee3adeb3948a3b', 4)
-2025-10-22 16:44:50,259 INFO sqlalchemy.engine.Engine COMMIT
-{'status': 'running', 'username': 'root', 'cmdline': ['python', 'data_puller.py'], 'create_time': 1761147886.42, 'net_connections': [], 'ppid': 888, 'cwd': '/home/root/simple-rootkitDetector', 'exe': '/usr/bin/python3.10', 'memory_info': pmem(rss=44601344, vms=53149696, shared=14024704, text=2838528, lib=0, data=32194560, dirty=0), 'name': 'python', 'pid': 17005}
-Executable Hash: df23391eb5ab66f005be15f792d55766d7ce96198e9e10df2aea72aec8c686ea
-2025-10-22 16:44:50,274 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,274 INFO sqlalchemy.engine.Engine INSERT INTO processes (pid, name, username, exe, create_time, cmdline, ppid, cwd, net_connections, status, memory_info, hashfile, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-10-22 16:44:50,274 INFO sqlalchemy.engine.Engine [cached since 0.6656s ago] (17005, 'python', 'root', '/usr/bin/python3.10', '1761147886.42', 'python data_puller.py', 888, '/home/root/simple-rootkitDetector', '[]', 'running', 'pmem(rss=44601344, vms=53149696, shared=14024704, text=2838528, lib=0, data=32194560, dirty=0)', 'df23391eb5ab66f005be15f792d55766d7ce96198e9e10df2aea72aec8c686ea', 4)
-2025-10-22 16:44:50,274 INFO sqlalchemy.engine.Engine COMMIT
-2025-10-22 16:44:50,288 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2025-10-22 16:44:50,289 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.version = ?
-2025-10-22 16:44:50,289 INFO sqlalchemy.engine.Engine [generated in 0.00018s] (4,)
-2025-10-22 16:44:50,291 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,291 INFO sqlalchemy.engine.Engine [generated in 0.00016s] (1, 1, 0)
-2025-10-22 16:44:50,292 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,292 INFO sqlalchemy.engine.Engine [cached since 0.0008628s ago] (2, 1, 0)
-2025-10-22 16:44:50,292 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,292 INFO sqlalchemy.engine.Engine [cached since 0.001514s ago] (6, 1, 0)
-ATTR:  memory_info
-Anomaly detected in memory_info: Baseline=pmem(rss=2744320, vms=4055040, shared=1835008, text=1875968, lib=0, data=1318912, dirty=0), Current=pmem(rss=2695168, vms=4055040, shared=1835008, text=1875968, lib=0, data=1318912, dirty=0)
-2025-10-22 16:44:50,293 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,293 INFO sqlalchemy.engine.Engine [cached since 0.002099s ago] (132, 1, 0)
-2025-10-22 16:44:50,293 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,294 INFO sqlalchemy.engine.Engine [cached since 0.002736s ago] (154, 1, 0)
-2025-10-22 16:44:50,294 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,294 INFO sqlalchemy.engine.Engine [cached since 0.003267s ago] (169, 1, 0)
-2025-10-22 16:44:50,294 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,295 INFO sqlalchemy.engine.Engine [cached since 0.003791s ago] (171, 1, 0)
-2025-10-22 16:44:50,295 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,295 INFO sqlalchemy.engine.Engine [cached since 0.004324s ago] (174, 1, 0)
-2025-10-22 16:44:50,296 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,296 INFO sqlalchemy.engine.Engine [cached since 0.004935s ago] (190, 1, 0)
-2025-10-22 16:44:50,296 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,296 INFO sqlalchemy.engine.Engine [cached since 0.005614s ago] (195, 1, 0)
-2025-10-22 16:44:50,297 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,297 INFO sqlalchemy.engine.Engine [cached since 0.006164s ago] (204, 1, 0)
-ATTR:  memory_info
-Anomaly detected in memory_info: Baseline=pmem(rss=13352960, vms=616013824, shared=1441792, text=20480, lib=0, data=91430912, dirty=0), Current=pmem(rss=11653120, vms=616013824, shared=1441792, text=20480, lib=0, data=91430912, dirty=0)
-2025-10-22 16:44:50,298 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,298 INFO sqlalchemy.engine.Engine [cached since 0.006835s ago] (207, 1, 0)
-2025-10-22 16:44:50,298 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,298 INFO sqlalchemy.engine.Engine [cached since 0.007349s ago] (212, 1, 0)
-ATTR:  memory_info
-Anomaly detected in memory_info: Baseline=pmem(rss=10240000, vms=309780480, shared=1441792, text=20480, lib=0, data=50372608, dirty=0), Current=pmem(rss=10084352, vms=309780480, shared=1441792, text=20480, lib=0, data=50372608, dirty=0)
-2025-10-22 16:44:50,299 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,299 INFO sqlalchemy.engine.Engine [cached since 0.007858s ago] (247, 1, 0)
-2025-10-22 16:44:50,299 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,299 INFO sqlalchemy.engine.Engine [cached since 0.008436s ago] (277, 1, 0)
-2025-10-22 16:44:50,300 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,300 INFO sqlalchemy.engine.Engine [cached since 0.008909s ago] (280, 1, 0)
-2025-10-22 16:44:50,300 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,300 INFO sqlalchemy.engine.Engine [cached since 0.009411s ago] (286, 1, 0)
-2025-10-22 16:44:50,301 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,301 INFO sqlalchemy.engine.Engine [cached since 0.009925s ago] (290, 1, 0)
-2025-10-22 16:44:50,301 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,301 INFO sqlalchemy.engine.Engine [cached since 0.01046s ago] (320, 1, 0)
-2025-10-22 16:44:50,302 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,302 INFO sqlalchemy.engine.Engine [cached since 0.01095s ago] (327, 1, 0)
-2025-10-22 16:44:50,302 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,302 INFO sqlalchemy.engine.Engine [cached since 0.01143s ago] (348, 1, 0)
-2025-10-22 16:44:50,303 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,303 INFO sqlalchemy.engine.Engine [cached since 0.01238s ago] (350, 1, 0)
-2025-10-22 16:44:50,304 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,304 INFO sqlalchemy.engine.Engine [cached since 0.01338s ago] (360, 1, 0)
-2025-10-22 16:44:50,305 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,305 INFO sqlalchemy.engine.Engine [cached since 0.01426s ago] (362, 1, 0)
-2025-10-22 16:44:50,306 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,306 INFO sqlalchemy.engine.Engine [cached since 0.01496s ago] (370, 1, 0)
-2025-10-22 16:44:50,306 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,306 INFO sqlalchemy.engine.Engine [cached since 0.0155s ago] (400, 1, 0)
-2025-10-22 16:44:50,307 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,307 INFO sqlalchemy.engine.Engine [cached since 0.016s ago] (537, 1, 0)
-2025-10-22 16:44:50,307 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,307 INFO sqlalchemy.engine.Engine [cached since 0.01652s ago] (735, 1, 0)
-2025-10-22 16:44:50,308 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,308 INFO sqlalchemy.engine.Engine [cached since 0.01704s ago] (742, 1, 0)
-2025-10-22 16:44:50,308 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,309 INFO sqlalchemy.engine.Engine [cached since 0.01781s ago] (768, 1, 0)
-ATTR:  memory_info
-Anomaly detected in memory_info: Baseline=pmem(rss=13443072, vms=1267621888, shared=9830400, text=5582848, lib=0, data=42348544, dirty=0), Current=pmem(rss=13422592, vms=1267621888, shared=9830400, text=5582848, lib=0, data=42348544, dirty=0)
-2025-10-22 16:44:50,309 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,309 INFO sqlalchemy.engine.Engine [cached since 0.01855s ago] (793, 1, 0)
-2025-10-22 16:44:50,310 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,310 INFO sqlalchemy.engine.Engine [cached since 0.01913s ago] (878, 1, 0)
-2025-10-22 16:44:50,310 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,310 INFO sqlalchemy.engine.Engine [cached since 0.01967s ago] (881, 1, 0)
-2025-10-22 16:44:50,311 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,311 INFO sqlalchemy.engine.Engine [cached since 0.02018s ago] (888, 1, 0)
-2025-10-22 16:44:50,311 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,311 INFO sqlalchemy.engine.Engine [cached since 0.0207s ago] (890, 1, 0)
-2025-10-22 16:44:50,312 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,312 INFO sqlalchemy.engine.Engine [cached since 0.02145s ago] (923, 1, 0)
-2025-10-22 16:44:50,313 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,313 INFO sqlalchemy.engine.Engine [cached since 0.0221s ago] (924, 1, 0)
-2025-10-22 16:44:50,313 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,313 INFO sqlalchemy.engine.Engine [cached since 0.02272s ago] (961, 1, 0)
-2025-10-22 16:44:50,314 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,314 INFO sqlalchemy.engine.Engine [cached since 0.0233s ago] (1521, 1, 0)
-2025-10-22 16:44:50,315 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,315 INFO sqlalchemy.engine.Engine [cached since 0.02386s ago] (1585, 1, 0)
-2025-10-22 16:44:50,315 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,315 INFO sqlalchemy.engine.Engine [cached since 0.0244s ago] (1756, 1, 0)
-2025-10-22 16:44:50,316 INFO sqlalchemy.engine.Engine SELECT processes.id AS processes_id, processes.pid AS processes_pid, processes.name AS processes_name, processes.username AS processes_username, processes.exe AS processes_exe, processes.create_time AS processes_create_time, processes.cmdline AS processes_cmdline, processes.ppid AS processes_ppid, processes.cwd AS processes_cwd, processes.net_connections AS processes_net_connections, processes.status AS processes_status, processes.memory_info AS processes_memory_info, processes.hashfile AS processes_hashfile, processes.version AS processes_version
-FROM processes
-WHERE processes.pid = ?
- LIMIT ? OFFSET ?
-2025-10-22 16:44:50,316 INFO sqlalchemy.engine.Engine [cached since 0.02496s ago] (17005, 1, 0)
+STAT INFO: {
+    "pid": 2,
+    "comm": "init-systemd(Ub",
+    "state": "S",
+    "ppid": 1,
+    "pgrp": 0,
+    "session": 0,
+    "tty_nr": 0,
+    "tpgid": -1,
+    "flags": 4194624,
+    "minflt": 131,
+    "cminflt": 5012,
+    "majflt": 0,
+    "cmajflt": 140,
+    "utime": 0,
+    "stime": 2,
+    "cutime": 4,
+    "cstime": 7,
+    "priority": 20,
+    "nice": 0,
+    "num_threads": 2,
+    "itrealvalue": 0,
+    "starttime": 123,
+    "vsize": 3145728,
+    "rss": 480,
+    "rsslim": 18446744073709551615,
+    "startcode": 2889840,
+    "endcode": 4762709,
+    "startstack": 140726848456032,
+    "kstkesp": 0,
+    "kstkeip": 0,
+    "signal": 0,
+    "blocked": 0,
+    "sigignore": 2147090174,
+    "sigcatch": 0,
+    "wchan": 0,
+    "nswap": 0,
+    "cnswap": 0,
+    "exit_signal": 17,
+    "processor": 11,
+    "rt_priority": 0,
+    "policy": 0,
+    "delayacct_blkio_ticks": 0,
+    "guest_time": 0,
+    "cguest_time": 0,
+    "start_data": 4841488,
+    "end_data": 4843360,
+    "start_brk": 366874624,
+    "arg_start": 140726848462380,
+    "arg_end": 140726848462386,
+    "env_start": 140726848462386,
+    "env_end": 140726848462834,
+    "exit_code": 0
+}

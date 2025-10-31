@@ -1,1 +1,0 @@
-# Simple-Rootkit-Detector

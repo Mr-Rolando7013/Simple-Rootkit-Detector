@@ -46,7 +46,6 @@ class Process_FDINFO(Base):
     
     id = Column(Integer, primary_key=True)
     snapshot_id = Column(Integer, nullable=False)
-    #FK from Process table
     pid = Column(Integer, nullable=False)
     fd = Column(String, nullable=False)
     target = Column(String, nullable=True)
@@ -56,6 +55,7 @@ class Process_FDINFO(Base):
     ino = Column(String, nullable=True)
     type = Column(String, nullable=True)
 
+# To Do
 class Sockets(Base):
     __tablename__ = 'sockets'
     id = Column(Integer, primary_key=True)
@@ -89,20 +89,39 @@ class Modules(Base):
 class ProcDetails(Base):
     __tablename__ = 'proc_details'
     id = Column(Integer, primary_key=True)
+    snapshot_id = Column(Integer, nullable=False)
     pid = Column(Integer, nullable=False)
     cwd = Column(String, nullable=True)
     uid = Column(String, nullable=True)
     gid = Column(String, nullable=True)
     env_vars = Column(String, nullable=True)
     fd_count = Column(Integer, nullable=True)
-    net_connections = Column(String, nullable=True)
     suspicious_flags = Column(String, nullable=True)
     cmdline = Column(String, nullable=True)
     notes = Column(String, nullable=True)
     version = Column(Integer, nullable=False)
+    stat_json = Column(String, nullable=True)
 
     def __repr__(self):
         return f"<ProcDetails(id={self.id}, pid={self.pid}, cwd='{self.cwd}')>"
+
+class ProcNetInfo(Base):
+    __tablename__ =  "proc_net_info"
+    id = Column(Integer, primary_key=True)
+    snapshot_id = Column(Integer, nullable=False)
+    net_tcp_info = Column(String, nullable=True)
+    net_tcp6_info = Column(String, nullable=True)
+    net_udp_info = Column(String, nullable=True)
+    net_udp6_info = Column(String, nullable=True)
+    net_raw_info = Column(String, nullable=True)
+    net_raw6_info = Column(String, nullable=True)
+    net_unix_info = Column(String, nullable=True)
+    net_dev_info = Column(String, nullable=True)
+    net_arp_info = Column(String, nullable=True)
+    net_route_info = Column(String, nullable=True)
+
+    def __repr__(self):
+        return f"<ProcNetInfo(id={self.id})>"
 
 def create_db():
     # Create all tables
@@ -112,13 +131,36 @@ def create_db():
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Example of adding a new process (this would normally be done in your data pulling logic)
+def add_snapshot(snapshot):
+    session.add(snapshot)
+    session.commit()
+
 def add_process(process_info):
     session.add(process_info)
     session.commit()
 
 def add_proc_details(proc_details):
     session.add(proc_details)
+    session.commit()
+
+def add_snapshot(snapshot):
+    session.add(snapshot)
+    session.commit()
+
+def add_mount(mount):
+    session.add(mount)
+    session.commit()
+
+def add_modules(module):
+    session.add(module)
+    session.commit()
+
+def add_proc_net_info(proc_net_info):
+    session.add(proc_net_info)
+    session.commit()
+
+def add_process_fdinfo(process_fdinfo):
+    session.add(process_fdinfo)
     session.commit()
 
 def get_version_number():
@@ -134,6 +176,21 @@ def display_proc_details():
     proc_details = session.query(ProcDetails).all()
     for detail in proc_details:
         print(detail)
+
+def display_mounts():
+    mounts = session.query(Mounts).all()
+    for mount in mounts:
+        print(mount)
+
+def display_modules():
+    modules = session.query(Modules).all()
+    for module in modules:
+        print(module)
+
+def display_proc_net_info():
+    proc_net_infos = session.query(ProcNetInfo).all()
+    for info in proc_net_infos:
+        print(info)
 
 def check_process_baseline(version):
     current_processes = session.query(Process).filter_by(version=version).all()

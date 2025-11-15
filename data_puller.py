@@ -4,6 +4,7 @@ import os
 import json
 from create_db import *
 import datetime
+import time
 
 # List of field names from /proc/[pid]/stat
 stat_fields = [
@@ -37,7 +38,7 @@ def read_and_add_proc_net(snap_id):
     net_route_info = []
     try:
         with open("/proc/net/tcp", "r") as f:
-            next(f)  # Skip header line
+            next(f)
             for line in f:
                 net_tcp_info.append(line.strip().split())
         with open("/proc/net/tcp6", "r") as f:
@@ -66,7 +67,7 @@ def read_and_add_proc_net(snap_id):
                 net_unix_info.append(line.strip().split())
         with open("/proc/net/dev", "r") as f:
             next(f)
-            next(f)  # Skip two header lines
+            next(f)
             for line in f:
                 net_dev_info.append(line.strip().split())
         with open("/proc/net/arp", "r") as f:
@@ -200,13 +201,12 @@ def read_stat_json(pid):
 
 
 def read_and_add_fd_json(pid, snap_id):
-    # Im using version, but I pass a snpashot_id and that bs
     for file in os.listdir(f"/proc/{pid}/fd"):
         try:
             fd_dict = {}
             target = os.readlink(f"/proc/{pid}/fd/{file}")
             fd_dict[file] = {"target": target}
-            print("Target:", target)
+            #print("Target:", target)
             with open(f"/proc/{pid}/fdinfo/{file}", "r") as f:
                 info = f.read()
                 #print("FD Info:", info)
@@ -235,20 +235,62 @@ def read_and_add_fd_json(pid, snap_id):
             continue
     return json.dumps(fd_dict, indent=4)
 
-def decode_env_vars(data):
-    """Decode NUL-separated environment variables into a dict."""
-    env_vars = {}
-    for pair in data.split(b'\0'):
-        if b'=' in pair:
-            key, val = pair.split(b'=', 1)
-            env_vars[key.decode(errors='replace')] = val.decode(errors='replace')
-    return env_vars
-    
+def read_add_maps(pid, snapshot_id):
+    try:
+        # Open in binary mode ('rb') so we get bytes
+        with open(f"/proc/{pid}/maps", 'rb') as f:
+            for line in f:
+                line = line.decode('utf-8').strip()
+                parts = line.split(None, 5)  # Split into max 6 parts
+                if len(parts) >= 5:
+                    addr_range = parts[0]
+                    permissions = parts[1]
+                    offset = parts[2]
+                    dev = parts[3]
+                    inode = parts[4]
+                    pathname = parts[5] if len(parts) == 6 else None
 
-def add_proc_details():
-    snap_id = create_snapshot()
+                    start_addr, end_addr = addr_range.split('-')
+
+                    temp = Maps(
+                        snapshot_id=snapshot_id,
+                        pid=pid,
+                        start_addr=start_addr,
+                        end_addr=end_addr,
+                        permissions=permissions,
+                        offset=offset,
+                        dev=dev,
+                        inode=inode,
+                        pathname=pathname
+                        # raw_line=line  # If you want to store the raw line
+                    )
+                    add_maps(temp)
+
+    except (FileNotFoundError, PermissionError) as e:
+        print(f"Cannot read /proc/{pid}/maps: {e}")
+        return
+    
+def add_proc_details(snap_id, pid, cwd, uid, gid, environ, fd_info, suspicious_flags, cmdline, notes, stat_info):
+    temp = ProcDetails(
+        snapshot_id=snap_id,
+        pid=int(pid),
+        cwd=cwd,
+        uid=uid,
+        gid=gid,
+        env_vars=environ,
+        fd_count=len(json.loads(fd_info)) if fd_info else 0,
+        suspicious_flags=suspicious_flags,
+        cmdline=cmdline,
+        notes=notes,
+        stat_json=stat_info
+    )
+    add_to_db_proc_details(temp)
+
+
+def add_proc_info(snap_id):
     proc_directory = os.getcwd()  # Save current directory
     os.chdir('/proc')  # Change to /proc directory
+    notes = ""
     
     # -------------------------------------
     # Read and process mounts and modules
@@ -315,14 +357,10 @@ def add_proc_details():
                 # This works
                 try:
                     with open('environ', 'rb') as f:
-                        data = f.read()
-                        env_hash_sha256 = hashlib.sha256(data).hexdigest()
-                        env_vars = decode_env_vars(data)
-                        #print(f"ENV HASH: {env_hash_sha256}")
-                        #print(f"ENVIRONMENT VARIABLES: {env_vars}")
+                        environ = f.read()
+
                 except (FileNotFoundError, PermissionError):
-                    env_vars = None
-                    sha256 = None
+                    print("Could not read environ")
 
 
                 # -------------------------------------
@@ -332,23 +370,15 @@ def add_proc_details():
                 #print(f"STAT INFO: {stat_info}")
                 
 
-                #-------------------------------------
-                # Crashes: Process does not exist anymore.
-                #Temp process: [Errno 2] No such file or directory: '24336'
-                #Process does not exist anymore.
-                #Temp process: [Errno 2] No such file or directory: '24337'
+                #------------------------------------
                 fd_info = read_and_add_fd_json(pid, snap_id)
-                print(f"FD INFO: {fd_info}")
+                #print(f"FD INFO: {fd_info}")
 
-                # TO Do
-                #try:
-                    #with open('maps', 'r') as f:
-                        #maps_data = f.read()
-                        #print(f"MAPS DATA: {maps_data}")
-                #except (FileNotFoundError, PermissionError):
-                    #pass
+                # This works
+                read_add_maps(pid, snap_id)
+                display_maps()
 
-                #add_proc_details(pid, cwd_path, uid, gid, env_hash_sha256, fd_info, None, cmdline, notes, get_version_number() + 1, stat_info)
+                add_proc_details(snap_id, pid, cwd_path, uid, gid, environ, fd_info, None, cmdline, notes, stat_info)
             except FileNotFoundError as e:
                 print("Temp process:", e)
 
@@ -370,14 +400,13 @@ def get_file_hash(file_path, chunk_size=8192):
     except (FileNotFoundError, PermissionError):
         return None
     
-def add_process_to_table():
-    version = get_version_number()
+def add_process_to_table(snap_id):
     for proc in psutil.process_iter(['pid', 'name', 'username', 'exe', 'create_time', 'cmdline', 'ppid', 'cwd', 'net_connections', 'status', 'memory_info']):
-        print(proc.info)
+        #print(proc.info)
         hashfile = get_file_hash(proc.info['exe']) if proc.info['exe'] else None
-        print(f"Executable Hash: {hashfile}")
         proc.info['hashfile'] = hashfile
         temp = Process(
+            snapshot_id=snap_id,
             pid=proc.info['pid'],
             name=proc.info['name'],
             username=proc.info['username'],
@@ -390,29 +419,28 @@ def add_process_to_table():
             status=proc.info['status'],
             memory_info=str(proc.info['memory_info']),
             hashfile=hashfile,
-            version=version + 1
         )
         add_process(temp)
 
     #display_processes()
-    return version + 1
     
 def main():
     print("Do you want to create the database? (y/n): ")
     choice = input().strip().lower()
     if choice == 'y':
         create_db()
-        #add_process_to_table()
-    print("Do you want to check the process security? (y/n): ")
+    print("Start checking the system... (y/n)")
     choice = input().strip().lower()
+    counter = 0
     if choice == 'y':
-        version = add_process_to_table()
-        check_process_baseline(version)
-
-    print("Do you want to display proc details? (y/n): ")
-    choice = input().strip().lower()
-    if choice == 'y':
-        add_proc_details()
+        while counter <= 3:
+            temp_snap_id = create_snapshot()
+            add_process_to_table(temp_snap_id)
+            add_proc_info(temp_snap_id)
+            check_process_baseline(temp_snap_id)
+            counter += 1
+            print("Waiting for the next check...")
+            time.sleep(60)
 
 
 

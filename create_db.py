@@ -3,7 +3,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 DABASE_URL = "sqlite:///info.db"
 
-engine = create_engine(DABASE_URL, echo=True)
+engine = create_engine(DABASE_URL, echo=False)
 
 #create a base for models
 Base = declarative_base()
@@ -24,6 +24,7 @@ class Process(Base):
     __tablename__ = 'processes'
     
     id = Column(Integer, primary_key=True)
+    snapshot_id = Column(Integer, nullable=False)
     pid = Column(Integer, nullable=False)
     name = Column(String, nullable=False)
     username = Column(String, nullable=False)
@@ -36,7 +37,6 @@ class Process(Base):
     status = Column(String, nullable=False)
     memory_info = Column(String, nullable=True)
     hashfile = Column(String, nullable=True)
-    version = Column(Integer, nullable=False)
 
     def __repr__(self):
         return f"<Process(id={self.id}, pid={self.pid}, name='{self.name}', username='{self.username}')>"
@@ -99,7 +99,7 @@ class ProcDetails(Base):
     suspicious_flags = Column(String, nullable=True)
     cmdline = Column(String, nullable=True)
     notes = Column(String, nullable=True)
-    version = Column(Integer, nullable=False)
+    #version = Column(Integer, nullable=False)
     stat_json = Column(String, nullable=True)
 
     def __repr__(self):
@@ -122,6 +122,25 @@ class ProcNetInfo(Base):
 
     def __repr__(self):
         return f"<ProcNetInfo(id={self.id})>"
+    
+class Maps(Base):
+    __tablename__ = 'maps'
+    id = Column(Integer, primary_key=True)
+    snapshot_id = Column(Integer, nullable=False)
+    pid = Column(Integer, nullable=False)
+    start_addr = Column(String, nullable=False)
+    end_addr = Column(String, nullable=False)
+    permissions = Column(String, nullable=False)
+    offset = Column(String, nullable=False)
+    dev = Column(String, nullable=False)
+    inode = Column(String, nullable=False)
+    pathname = Column(String, nullable=True)
+
+    # raw original line if needed for debugging
+    #raw_line = Column(String, nullable=True)
+
+    def __repr__(self):
+        return f"<MAP INFO>(id={self.id} pid={self.pid})"
 
 def create_db():
     # Create all tables
@@ -135,11 +154,15 @@ def add_snapshot(snapshot):
     session.add(snapshot)
     session.commit()
 
+def add_maps(maps):
+    session.add(maps)
+    session.commit()
+
 def add_process(process_info):
     session.add(process_info)
     session.commit()
 
-def add_proc_details(proc_details):
+def add_to_db_proc_details(proc_details):
     session.add(proc_details)
     session.commit()
 
@@ -192,8 +215,15 @@ def display_proc_net_info():
     for info in proc_net_infos:
         print(info)
 
-def check_process_baseline(version):
-    current_processes = session.query(Process).filter_by(version=version).all()
+def display_maps():
+    maps = session.query(Maps).all()
+    for map in maps:
+        print(map)
+
+
+# Ignore this. This is not a real analysis function.
+def check_process_baseline(snapshot_id):
+    current_processes = session.query(Process).filter_by(snapshot_id=snapshot_id).all()
     for current_process in current_processes:
         differences = {}
         baseline_process = session.query(Process).filter_by(pid=current_process.pid).first()
